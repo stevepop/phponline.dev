@@ -1,0 +1,16 @@
+<?php declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use PHPUnit\Framework\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class {{ class }} extends TestCase
+{
+    use DatabaseTransactions;
+    
+    public function testExample()
+    {
+        $this->assertTrue(true);
+    }
+}

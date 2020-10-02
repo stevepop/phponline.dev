@@ -1,0 +1,23 @@
+<?php declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class {{ class }} extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [];
+
+    protected $casts = [];
+
+    // Relationships
+
+    // Model Methods
+
+    // New Builder
+
+    // New Collection
+}

@@ -1,0 +1,19 @@
+<?php declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class {{ class }} extends TestCase
+{
+    use DatabaseTransactions;
+    
+    public function testExample()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
+}
