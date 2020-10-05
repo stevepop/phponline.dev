@@ -74,23 +74,6 @@ class Article extends Model implements Sluggable
     }
 
     /**
-     * Get the total amount of minutes it will take to read this article
-     *
-     * @return string
-     */
-    public function getTimeToReadAttribute(): string
-    {
-        $words = str_word_count(strip_tags($this->body));
-        $minutes = floor($words / 250);
-        $seconds = floor($words % 250 / ($minutes / 60));
-
-        $minutes = ($minutes == 1) ? "minute" : "minutes";
-        $seconds = ($seconds == 1) ? "second" : "seconds";
-
-        return "{$minutes}, {$seconds} read";
-    }
-
-    /**
      * @return string
      */
     public function toTweet(): string

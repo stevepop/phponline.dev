@@ -33,10 +33,10 @@
                                     {{ optional($article->publish_date)->diffForHumans() ?? $article->created_at->diffForHumans() }}
                                 </time>
                                 <span class="mx-1">
-                                  ·
+                                  in
                                 </span>
                                 <span>
-                                  {{ $article->time_to_read }}
+                                  {{ $article->category->title }}
                                 </span>
                             </div>
                         </div>
