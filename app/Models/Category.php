@@ -26,7 +26,7 @@ class Category extends Model implements Sluggable
 
     public function articles(): HasMany
     {
-        return $this->belongsToMany(
+        return $this->hasMany(
             Article::class,
             'category_id',
         );
