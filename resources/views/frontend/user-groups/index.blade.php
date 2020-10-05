@@ -1,3 +1,3 @@
 <x-app-layout>
-    Package
+    User Groups
 </x-app-layout>

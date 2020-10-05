@@ -8,6 +8,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 Route::get('/', \App\Http\Controllers\Frontend\HomePageAction::class)->name('home');
+Route::get('about', \App\Http\Controllers\Frontend\AboutPageAction::class)->name('about');
+Route::get('contact-us', \App\Http\Controllers\Frontend\ContactPageAction::class)->name('contact');
 
 /**
  * Category Routes
@@ -25,8 +27,9 @@ Route::prefix('category')->as('categories:')->group(function () {
 Route::prefix('packages')->as('packages:')->group(function () {
 
     /**
-     * @todo Show All Packages
+     * Show All Packages
      */
+    Route::get('/', \App\Http\Controllers\Frontend\Packages\IndexAction::class)->name('index');
 
     /**
      * Show a Package
@@ -40,8 +43,9 @@ Route::prefix('packages')->as('packages:')->group(function () {
 Route::prefix('user-groups')->as('user-groups:')->group(function () {
 
     /**
-     * @todo Show All User Groups
+     * Show All User Groups
      */
+    Route::get('/', \App\Http\Controllers\Frontend\UserGroups\IndexAction::class)->name('index');
 
     /**
      * Show a User Group
@@ -79,9 +83,10 @@ Route::prefix('user-groups')->as('user-groups:')->group(function () {
  * @todo Admin Tasks
  */
 
-Route::get('blog', function () {
-    //
-})->name('articles:index');
+/**
+ * Show all Blog Posts
+ */
+Route::get('blog', \App\Http\Controllers\Frontend\Articles\IndexAction::class)->name('articles:index');
 
 
 /**

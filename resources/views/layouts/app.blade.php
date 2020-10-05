@@ -23,7 +23,7 @@
             <x-site-nav />
 
             <!-- Page Content -->
-            <main class="py-10">
+            <main>
                 {{ $slot }}
             </main>
 

@@ -41,5 +41,6 @@ class BladeComponentServiceProvider extends ServiceProvider
          * Structural Components
          */
         Blade::component('components.structure.container', 'app-container');
+        Blade::component('components.structure.header', 'app-header');
     }
 }

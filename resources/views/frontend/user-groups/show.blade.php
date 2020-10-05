@@ -1,3 +1,3 @@
-<x-guest-layout>
+<x-app-layout>
     User Group
-</x-guest-layout>
+</x-app-layout>

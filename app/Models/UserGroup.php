@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Builders\UserGroupBuilder;
 use App\Models\Concerns\HasSlug;
 use App\Models\Concerns\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -57,5 +58,14 @@ class UserGroup extends Model implements Sluggable
     public function getSluggableValue(): string
     {
         return $this->title;
+    }
+
+    /**
+     * @param \Illuminate\Database\Query\Builder $query
+     * @return UserGroupBuilder
+     */
+    public function newEloquentBuilder($query): UserGroupBuilder
+    {
+        return new UserGroupBuilder($query);
     }
 }

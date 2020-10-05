@@ -1,3 +1,3 @@
 <x-app-layout>
-    Package
+    Articles
 </x-app-layout>

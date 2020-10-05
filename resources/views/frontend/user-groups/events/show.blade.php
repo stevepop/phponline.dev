@@ -1,3 +1,3 @@
-<x-guest-layout>
+<x-app-layout>
     User Group -> Events -> Event
-</x-guest-layout>
+</x-app-layout>

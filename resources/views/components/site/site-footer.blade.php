@@ -1,36 +1,13 @@
 <div class="bg-white">
     <div class="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
         <nav class="-mx-5 -my-2 flex flex-wrap justify-center">
-            <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-red-900">
-                    About
-                </a>
-            </div>
-            <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-red-900">
-                    Blog
-                </a>
-            </div>
-            <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-red-900">
-                    Jobs
-                </a>
-            </div>
-            <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-red-900">
-                    Press
-                </a>
-            </div>
-            <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-red-900">
-                    Accessibility
-                </a>
-            </div>
-            <div class="px-5 py-2">
-                <a href="#" class="text-base leading-6 text-gray-500 hover:text-red-900">
-                    Partners
-                </a>
-            </div>
+            @foreach(\App\Services\Menu\MenuLoader::footer() as $item)
+                <div class="px-5 py-2">
+                    <a href="{{ $item['link'] }}" title="{{ $item['title'] }}" class="text-base leading-6 text-gray-500 hover:text-red-900">
+                        {{ $item['name'] }}
+                    </a>
+                </div>
+            @endforeach
         </nav>
         <div class="mt-8 flex justify-center">
             <a href="#" class="text-gray-400 hover:text-red-500">
