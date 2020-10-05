@@ -1,3 +1,3 @@
-<x-guest-layout>
+<x-app-layout>
     Article
-</x-guest-layout>
+</x-app-layout>

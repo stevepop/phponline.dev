@@ -2,31 +2,25 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <div class="flex-shrink-0 flex items-center">
+                <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center">
                     <x-logo-text class="hidden lg:block h-8 w-auto" alt="PHP Online Logo" />
                     <x-logo-image class="block lg:hidden h-8 w-auto" alt="PHP Online Logo" />
-                </div>
+                </a>
                 <div class="hidden sm:-my-px sm:ml-6 space-x-8 sm:flex">
 
+                    @foreach(\App\Services\Menu\MenuLoader::main() as $item)
+                        <a
+                            href="{{ $item['link'] }}"
+                            class="inline-flex items-center px-1 pt-1 border-b-2 border-{{ request()->routeIs($item['pattern']) ? 'red-500' : 'transparent' }} text-sm font-medium leading-5 text-gray-{{ request()->routeIs($item['pattern']) ? '900' : '500' }} hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+                            title="{{ $item['title'] }}"
+                        >
+                            {{ $item['name'] }}
+                        </a>
+                    @endforeach
 
-                    <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-red-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-red-700 transition duration-150 ease-in-out">
-                        Blog
-                    </a>
-
-
-                    <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        Tutorials
-                    </a>
-
-
-                    <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        Packages
-                    </a>
-
-
-                    <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        User Groups
-                    </a>
+{{--                    <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-red-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-red-700 transition duration-150 ease-in-out">--}}
+{{--                        Blog--}}
+{{--                    </a>--}}
 
                 </div>
             </div>

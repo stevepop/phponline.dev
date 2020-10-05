@@ -1,3 +1,3 @@
-<x-guest-layout>
+<x-app-layout>
     Category -> Articles
-</x-guest-layout>
+</x-app-layout>
