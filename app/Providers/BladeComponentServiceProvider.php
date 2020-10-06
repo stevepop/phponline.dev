@@ -36,6 +36,9 @@ class BladeComponentServiceProvider extends ServiceProvider
         Blade::component('components.icons.link', 'icon-link');
         Blade::component('components.icons.link-external', 'icon-link-external');
         Blade::component('components.icons.music', 'icon-music');
+        Blade::component('components.icons.pencil', 'icon-pencil');
+        Blade::component('components.icons.archive', 'icon-archive');
+        Blade::component('components.icons.pencil-alt', 'icon-pencil-alt');
         Blade::component('components.icons.microphone', 'icon-microphone');
         Blade::component('components.icons.packagist', 'icon-packagist');
 
@@ -52,6 +55,12 @@ class BladeComponentServiceProvider extends ServiceProvider
         Blade::component('components.structure.container', 'app-container');
         Blade::component('components.structure.header', 'app-header');
         Blade::component('components.structure.simple-cta', 'app-simple-cta');
+
+
+        /**
+         * Dashboard Statistics
+         */
+        Blade::component('components.statistics.card', 'app-stat-card');
 
         /**
          * Article Components

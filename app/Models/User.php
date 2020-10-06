@@ -58,6 +58,38 @@ class User extends Authenticatable implements Sluggable
         );
     }
 
+    public function articles(): HasMany
+    {
+        return $this->hasMany(
+            Article::class,
+            'submitted_by_user_id',
+        );
+    }
+
+    public function podcasts(): HasMany
+    {
+        return $this->hasMany(
+            Podcast::class,
+            'submitted_by_user_id',
+        );
+    }
+
+    public function packages(): HasMany
+    {
+        return $this->hasMany(
+            Package::class,
+            'submitted_by_user_id',
+        );
+    }
+
+    public function links(): HasMany
+    {
+        return $this->hasMany(
+            Link::class,
+            'user_id'
+        );
+    }
+
     /**
      * @return HasMany
      */

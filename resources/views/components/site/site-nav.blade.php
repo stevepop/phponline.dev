@@ -27,36 +27,86 @@
             <div class="hidden sm:ml-6 sm:flex sm:items-center">
 
                 @auth
-                    <!-- Profile dropdown -->
-                    <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
-                        <div>
-                            <button @click="open = !open" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true" x-bind:aria-expanded="open">
-                                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                    <x-jet-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                             </button>
-                        </div>
-                        <div x-show="open" x-description="Profile dropdown panel, show/hide based on dropdown state." x-transition:enter="transition ease-out duration-200" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg" style="display: none;">
-                            <div class="py-1 rounded-md bg-white shadow-xs">
+                        </x-slot>
 
-                                <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                    Your Profile
-                                </a>
-
-                                <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                    Settings
-                                </a>
-
-                                <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
-                                    Sign out
-                                </a>
-
+                        <x-slot name="content">
+                            <!-- Account Management -->
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Manage Account') }}
                             </div>
-                        </div>
-                    </div>
+
+                            <x-jet-dropdown-link href="{{ route('dashboard:index') }}">
+                                {{ __('Dashboard') }}
+                            </x-jet-dropdown-link>
+
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
+                            </x-jet-dropdown-link>
+
+                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                                    {{ __('API Tokens') }}
+                                </x-jet-dropdown-link>
+                            @endif
+
+                            <div class="border-t border-gray-100"></div>
+
+                            <!-- Team Management -->
+                            @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Manage Team') }}
+                                </div>
+
+                                <!-- Team Settings -->
+                                <x-jet-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                    {{ __('Team Settings') }}
+                                </x-jet-dropdown-link>
+
+                                @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
+                                    <x-jet-dropdown-link href="{{ route('teams.create') }}">
+                                        {{ __('Create New Team') }}
+                                    </x-jet-dropdown-link>
+                                @endcan
+
+                                <div class="border-t border-gray-100"></div>
+
+                                <!-- Team Switcher -->
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Switch Teams') }}
+                                </div>
+
+                                @foreach (Auth::user()->allTeams() as $team)
+                                    <x-jet-switchable-team :team="$team" />
+                                @endforeach
+
+                                <div class="border-t border-gray-100"></div>
+                        @endif
+
+                        <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                     onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                    {{ __('Logout') }}
+                                </x-jet-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-jet-dropdown>
                 @else
                     <div class="flex h-full">
                         <div class="hidden sm:-my-px sm:ml-6 space-x-8 sm:flex">
-                            <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                Calendar
+                            <a href="{{ route('login') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                Sign in
+                            </a>
+                            <a href="{{ route('register') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                Sign up
                             </a>
                         </div>
                     </div>
