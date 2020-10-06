@@ -13,8 +13,9 @@ class LatestFromTheBlog extends Component
 
     public function mount()
     {
-        $this->articles = Article::with(['tags', 'submittedByUser'])->published()->whereHas('category', function (Builder $builder) {
-            $builder->where('slug', 'tutorials');
+        $this->articles = Article::with(['tags', 'submittedByUser'])
+            ->published()->whereHas('category', function (Builder $builder) {
+            $builder->where('slug', 'news');
         })->latest('publish_date')->take(4)->get();
     }
 

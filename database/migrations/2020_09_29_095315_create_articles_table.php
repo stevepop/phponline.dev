@@ -23,6 +23,8 @@ class CreateArticlesTable extends Migration
             $table->string('external_url')->nullable();
             $table->string('tweet_url')->nullable();
 
+            $table->string('level');
+
             $table->boolean('published')->default(false);
             $table->boolean('send_automated_tweet')->default(true);
             $table->boolean('tweet_sent')->default(false);
@@ -31,7 +33,7 @@ class CreateArticlesTable extends Migration
 
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('submitted_by_user_id')->nullable();
-        
+
 
             $table->datetime('publish_date')->nullable();
             $table->timestamps();

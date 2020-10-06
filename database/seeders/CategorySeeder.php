@@ -26,7 +26,7 @@ class CategorySeeder extends Seeder
     public function run()
     {
         foreach ($this->categories as $category) {
-            $category = Category::create($category);
+            Category::create($category);
         }
     }
 }

@@ -6,6 +6,13 @@
         <div class="mt-6 grid gap-16 border-t-2 border-gray-100 pt-3 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
             @foreach ($articles as $article)
                 <div>
+                    <div>
+                        <a href="{{ route('articles:' . $article->level) }}" class="inline-block">
+                          <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
+                            {{ ucwords($article->level) }}
+                          </span>
+                        </a>
+                    </div>
                     <a href="{{ route('articles:show', [$article->slug]) }}" class="block">
                         <h3 class="mt-2 text-xl leading-7 font-semibold text-gray-900">
                             {{ $article->title}}

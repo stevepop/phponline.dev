@@ -40,6 +40,12 @@ return [
                 'link' => '/user-groups',
                 'title' => 'View our User Groups',
                 'pattern' => 'user-groups:index'
+            ],
+            [
+                'name' => 'Podcasts',
+                'link' => '/podcasts',
+                'title' => 'View our Podcasts',
+                'pattern' => 'podcasts:index'
             ]
         ],
 

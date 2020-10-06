@@ -13,16 +13,16 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $this->call(PackageSeeder::class);
+        $this->call([
+            PackageSeeder::class,
+            PodcastSeeder::class,
+            CategorySeeder::class
+        ]);
 
         Article::factory(50)->create();
         TagFactory::times(20)->create();
         Link::factory(50)->create();
-
-        $this->call(CategorySeeder::class);
-
         UserGroup::factory(50)->create();
-
         Event::factory(89)->create();
     }
 }

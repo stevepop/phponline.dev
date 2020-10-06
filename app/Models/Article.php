@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\CanBeClicked;
 use Spatie\Tags\Tag;
 use Spatie\Tags\HasTags;
 use App\Models\Concerns\HasSlug;
@@ -19,7 +20,23 @@ class Article extends Model implements Sluggable
     use HasTags;
     use HasFactory;
     use SoftDeletes;
+    use CanBeClicked;
     use CreatesPreviewSecret;
+
+    /**
+     * @var string
+     */
+    public const BEGINNER = 'beginner';
+
+    /**
+     * @var string
+     */
+    public const INTERMEDIATE = 'intermediate';
+
+    /**
+     * @var string
+     */
+    public const ADVANCED = 'advanced';
 
     protected $fillable = [
         'title',
@@ -28,6 +45,7 @@ class Article extends Model implements Sluggable
         'body',
         'external_url',
         'tweet_url',
+        'level',
         'published',
         'send_automated_tweet',
         'tweet_sent',

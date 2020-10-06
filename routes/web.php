@@ -38,6 +38,17 @@ Route::prefix('packages')->as('packages:')->group(function () {
 });
 
 /**
+ * Podcast Routes
+ */
+Route::prefix('podcasts')->as('podcasts:')->group(function () {
+
+    /**
+     * Show all podcasts
+     */
+    Route::get('/', \App\Http\Controllers\Frontend\Podcasts\IndexAction::class)->name('index');
+});
+
+/**
  * User Group Routes
  */
 Route::prefix('user-groups')->as('user-groups:')->group(function () {
@@ -87,6 +98,21 @@ Route::prefix('user-groups')->as('user-groups:')->group(function () {
  * Show all Blog Posts
  */
 Route::get('blog', \App\Http\Controllers\Frontend\Articles\IndexAction::class)->name('articles:index');
+
+/**
+ * Show all Beginner Blog posts
+ */
+Route::get('beginners', \App\Http\Controllers\Frontend\Articles\Levels\BeginnerAction::class)->name('articles:beginner');
+
+/**
+ * Show all Intermediate Blog posts
+ */
+Route::get('intermediate', \App\Http\Controllers\Frontend\Articles\Levels\IntermediateAction::class)->name('articles:intermediate');
+
+/**
+ * Show all Advanced Blog posts
+ */
+Route::get('advanced', \App\Http\Controllers\Frontend\Articles\Levels\AdvancedAction::class)->name('articles:advanced');
 
 
 /**

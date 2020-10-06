@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Builders\UserGroupBuilder;
+use App\Models\Concerns\CanBeClicked;
 use App\Models\Concerns\HasSlug;
 use App\Models\Concerns\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +15,7 @@ class UserGroup extends Model implements Sluggable
 {
     use HasSlug;
     use HasFactory;
+    use CanBeClicked;
 
     protected $fillable = [
         'title',

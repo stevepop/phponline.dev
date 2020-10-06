@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Builders\EventBuilder;
+use App\Models\Concerns\CanBeClicked;
 use App\Models\Concerns\HasEvents;
 use App\Models\Concerns\HasSlug;
 use App\Models\Concerns\Sluggable;
@@ -14,6 +15,7 @@ class Event extends Model implements Sluggable
     use HasSlug;
     use HasEvents;
     use HasFactory;
+    use CanBeClicked;
 
     protected $fillable = [
         'title',

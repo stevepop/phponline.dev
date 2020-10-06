@@ -1,16 +1,16 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Models\Builders\PackageBuilder;
+use App\Models\Builders\PodcastBuilder;
 use App\Models\Concerns\CanBeClicked;
 use App\Models\Concerns\HasSlug;
 use App\Models\Concerns\Sluggable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Package extends Model implements Sluggable
+class Podcast extends Model implements Sluggable
 {
     use HasSlug;
     use HasFactory;
@@ -33,6 +33,7 @@ class Package extends Model implements Sluggable
         'json' => 'json',
     ];
 
+    // Relationships
     /**
      * @return BelongsTo
      */
@@ -44,6 +45,7 @@ class Package extends Model implements Sluggable
         );
     }
 
+    // Model Methods
     /**
      * @return string
      */
@@ -52,12 +54,15 @@ class Package extends Model implements Sluggable
         return $this->title;
     }
 
+    // New Builder
     /**
      * @param \Illuminate\Database\Query\Builder $query
-     * @return PackageBuilder
+     * @return PodcastBuilder
      */
-    public function newEloquentBuilder($query): PackageBuilder
+    public function newEloquentBuilder($query): PodcastBuilder
     {
-        return new PackageBuilder($query);
+        return new PodcastBuilder($query);
     }
+
+    // New Collection
 }

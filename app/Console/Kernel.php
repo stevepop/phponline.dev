@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\Podcasts\PublishScheduledPodcastsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Console\Commands\Events\PublishScheduledEventsCommand;
@@ -19,6 +20,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(PublishScheduledArticlesCommand::class)->hourly();
         $schedule->command(PublishScheduledEventsCommand::class)->hourly();
         $schedule->command(PublishScheduledPackagesCommand::class)->hourly();
+        $schedule->command(PublishScheduledPodcastsCommand::class)->hourly();
     }
 
     protected function commands()

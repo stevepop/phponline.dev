@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Builders\LinkBuilder;
+use App\Models\Concerns\CanBeClicked;
 use App\Models\Concerns\HasSlug;
 use App\Models\Concerns\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,6 +14,7 @@ class Link extends Model implements Sluggable
 {
     use HasSlug;
     use HasFactory;
+    use CanBeClicked;
 
     public const STATUS_SUBMITTED = 'PENDING';
     public const STATUS_APPROVED = 'APPROVED';
