@@ -13,6 +13,11 @@ class Category extends Model implements Sluggable
     use HasSlug;
     use HasFactory;
 
+    public const NEWS = 'news';
+    public const EVENTS = 'events';
+    public const PACKAGES = 'packages';
+    public const TUTORIALS = 'tutorials';
+
     protected $fillable = [
         'title',
         'slug',

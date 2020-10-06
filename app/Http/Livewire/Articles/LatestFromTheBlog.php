@@ -1,8 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Http\Livewire\Articles;
 
 use App\Models\Article;
+use App\Models\Category;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -13,9 +14,9 @@ class LatestFromTheBlog extends Component
 
     public function mount()
     {
-        $this->articles = Article::with(['tags', 'submittedByUser'])
+        $this->articles = Article::with(['tags', 'submittedByUser', 'category'])
             ->published()->whereHas('category', function (Builder $builder) {
-            $builder->where('slug', 'news');
+            $builder->where('slug', Category::NEWS);
         })->latest('publish_date')->take(4)->get();
     }
 

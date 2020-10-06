@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\View\Components\Articles\ArticleCard;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,5 +43,10 @@ class BladeComponentServiceProvider extends ServiceProvider
          */
         Blade::component('components.structure.container', 'app-container');
         Blade::component('components.structure.header', 'app-header');
+
+        /**
+         * Article Components
+         */
+        Blade::component(ArticleCard::class, 'app-article-card');
     }
 }

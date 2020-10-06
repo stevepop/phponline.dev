@@ -19,6 +19,7 @@ Welcome to the repo for PHP Online, a developer community for PHP developers wor
 - [ ] Books
 - [ ] Partners
 - [ ] User Groups
+- [ ] Podcasts
 
 
 ## MVP Features
@@ -29,6 +30,7 @@ Welcome to the repo for PHP Online, a developer community for PHP developers wor
 - [ ] Packages
 - [ ] Links
 - [ ] Profile
+- [ ] Podcasts
 
 ## Done
 

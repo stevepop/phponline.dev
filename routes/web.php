@@ -2,14 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+/**
+ * Authenticated Routes
+ */
+Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->as('dashboard:')->group(function () {
+
+    /**
+     * Main Dashboard
+     */
+    Route::get('/', \App\Http\Controllers\Dashboard\IndexAction::class)->name('index');
+});
 
 
 Route::get('/', \App\Http\Controllers\Frontend\HomePageAction::class)->name('home');
 Route::get('about', \App\Http\Controllers\Frontend\AboutPageAction::class)->name('about');
 Route::get('contact-us', \App\Http\Controllers\Frontend\ContactPageAction::class)->name('contact');
+
 
 /**
  * Category Routes
