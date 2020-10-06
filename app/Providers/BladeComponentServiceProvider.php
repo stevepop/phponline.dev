@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\View\Components\Articles\ArticleCard;
+use App\View\Components\Packages\PackageCard;
+use App\View\Components\Pocasts\PodcastCard;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,6 +33,12 @@ class BladeComponentServiceProvider extends ServiceProvider
         Blade::component('components.logo-image', 'logo-image');
         Blade::component('components.logo-text', 'logo-text');
 
+        Blade::component('components.icons.link', 'icon-link');
+        Blade::component('components.icons.link-external', 'icon-link-external');
+        Blade::component('components.icons.music', 'icon-music');
+        Blade::component('components.icons.microphone', 'icon-microphone');
+        Blade::component('components.icons.packagist', 'icon-packagist');
+
 
         /**
          * Site Components
@@ -43,10 +51,22 @@ class BladeComponentServiceProvider extends ServiceProvider
          */
         Blade::component('components.structure.container', 'app-container');
         Blade::component('components.structure.header', 'app-header');
+        Blade::component('components.structure.simple-cta', 'app-simple-cta');
 
         /**
          * Article Components
          */
         Blade::component(ArticleCard::class, 'app-article-card');
+
+
+        /**
+         * Package Components
+         */
+        Blade::component(PackageCard::class, 'app-package-card');
+
+        /**
+         * Podcasts Components
+         */
+        Blade::component(PodcastCard::class, 'app-podcast-card');
     }
 }

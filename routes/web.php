@@ -124,6 +124,11 @@ Route::get('advanced', \App\Http\Controllers\Frontend\Articles\Levels\AdvancedAc
 
 
 /**
+ * Track Click Through
+ */
+Route::get('clicks/{click}', \App\Http\Controllers\Clicks\TrackAction::class)->name('click:track');
+
+/**
  * Article Routes
  */
 Route::get('{article}', \App\Http\Controllers\Frontend\Articles\ShowAction::class)->name('articles:show');

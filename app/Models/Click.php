@@ -18,12 +18,24 @@ class Click extends Model
     ];
 
     // Relationships
+
+    /**
+     * @return MorphTo
+     */
     public function clickable(): MorphTo
     {
         return $this->morphTo();
     }
 
     // Model Methods
+
+    /**
+     * @return string
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
 
     // New Builder
 

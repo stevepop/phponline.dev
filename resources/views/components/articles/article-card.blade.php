@@ -1,10 +1,10 @@
-<div>
+<div class="bg-white shadow-md px-4 py-3 rounded-md">
     <div>
         <a href="{{ route('articles:' . $article->level) }}" class="inline-block">
-                          <span
-                              class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
-                            {{ ucwords($article->level) }}
-                          </span>
+          <span
+              class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
+            {{ ucwords($article->level) }}
+          </span>
         </a>
     </div>
     <a href="{{ route('articles:show', [$article->slug]) }}" class="block">

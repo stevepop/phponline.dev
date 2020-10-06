@@ -54,6 +54,14 @@ class Podcast extends Model implements Sluggable
         return $this->title;
     }
 
+    /**
+     * @return string
+     */
+    public function getClickableValue(): string
+    {
+        return $this->external_url;
+    }
+
     // New Builder
     /**
      * @param \Illuminate\Database\Query\Builder $query
