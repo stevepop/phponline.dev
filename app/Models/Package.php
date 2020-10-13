@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Builders\PackageBuilder;
+use App\Models\Concerns\CanBeBookmarked;
 use App\Models\Concerns\CanBeClicked;
 use App\Models\Concerns\HasSlug;
 use App\Models\Concerns\Sluggable;
@@ -15,6 +16,7 @@ class Package extends Model implements Sluggable
     use HasSlug;
     use HasFactory;
     use CanBeClicked;
+    use CanBeBookmarked;
 
     protected $fillable = [
         'title',

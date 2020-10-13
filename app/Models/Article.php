@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\CanBeBookmarked;
 use App\Models\Concerns\CanBeClicked;
 use Spatie\Tags\Tag;
 use Spatie\Tags\HasTags;
@@ -21,6 +22,7 @@ class Article extends Model implements Sluggable
     use HasFactory;
     use SoftDeletes;
     use CanBeClicked;
+    use CanBeBookmarked;
     use CreatesPreviewSecret;
 
     /**

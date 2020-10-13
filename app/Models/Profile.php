@@ -7,6 +7,7 @@ use App\Models\Concerns\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Profile extends Model implements Sluggable
 {
@@ -28,6 +29,14 @@ class Profile extends Model implements Sluggable
         return $this->belongsTo(
             User::class,
             'user_id'
+        );
+    }
+
+    public function feeds(): HasMany
+    {
+        return $this->hasMany(
+            Feed::class,
+            'profile_id',
         );
     }
 

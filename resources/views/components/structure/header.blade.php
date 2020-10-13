@@ -4,7 +4,7 @@
 
         @isset($actions)
             <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
-                <div class="inline-flex rounded-md shadow">
+                <div class="inline-flex">
                     {{ $actions }}
                 </div>
             </div>

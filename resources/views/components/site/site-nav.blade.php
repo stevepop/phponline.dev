@@ -18,10 +18,6 @@
                         </a>
                     @endforeach
 
-{{--                    <a href="#" class="inline-flex items-center px-1 pt-1 border-b-2 border-red-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-red-700 transition duration-150 ease-in-out">--}}
-{{--                        Blog--}}
-{{--                    </a>--}}
-
                 </div>
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -130,51 +126,106 @@
     <div x-description="Mobile menu, toggle classes based on menu state." x-state:on="Open" x-state:off="closed" :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
 
-            <a href="#" class="block pl-3 pr-4 py-2 border-l-4 border-red-500 text-base font-medium text-red-700 bg-gray-50 focus:outline-none focus:text-red-800 focus:bg-red-100 focus:border-red-700 transition duration-150 ease-in-out">
-                Dashboard
-            </a>
+            @foreach(\App\Services\Menu\MenuLoader::main() as $item)
+                <a
+                    href="{{ $item['link'] }}"
+                    title="{{ $item['title'] }}"
+                    class="block pl-3 pr-4 py-2 border-l-4 border-border-{{ request()->routeIs($item['pattern']) ? 'red-500' : 'transparent' }} text-base font-medium text-border-{{ request()->routeIs($item['pattern']) ? 'red-700' : 'gray-800' }} hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
+                >
+                    {{ $item['name'] }}
+                </a>
+            @endforeach
 
-
-            <a href="#" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
-                Team
-            </a>
-
-
-            <a href="#" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
-                Projects
-            </a>
-
-
-            <a href="#" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">
-                Calendar
-            </a>
+            @guest
+                <a
+                    href="{{ route('login') }}"
+                    title="Login to PHP Online"
+                    class="block pl-3 pr-4 py-2 border-l-4 border-border-{{ request()->routeIs('login') ? 'red-500' : 'transparent' }} text-base font-medium text-border-{{ request()->routeIs('login') ? 'red-700' : 'gray-800' }} hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
+                >
+                    Sign In
+                </a>
+                <a
+                    href="{{ route('register') }}"
+                    title="Register for a PHP Online Account"
+                    class="block pl-3 pr-4 py-2 border-l-4 border-border-{{ request()->routeIs('register') ? 'red-500' : 'transparent' }} text-base font-medium text-border-{{ request()->routeIs('register') ? 'red-700' : 'gray-800' }} hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out"
+                >
+                    Sign Up
+                </a>
+            @endguest
 
         </div>
-        <div class="pt-4 pb-3 border-t border-gray-200">
-            <div class="flex items-center px-4 space-x-3">
-                <div class="flex-shrink-0">
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+
+        @auth
+            <!-- Responsive Settings Options -->
+            <div class="pt-4 pb-1 border-t border-gray-200">
+                <div class="flex items-center px-4">
+                    <div class="flex-shrink-0">
+                        <img class="h-10 w-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                    </div>
+
+                    <div class="ml-3">
+                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    </div>
                 </div>
-                <div>
-                    <div class="text-base font-medium leading-6 text-gray-800">Tom Cook</div>
-                    <div class="text-sm font-medium leading-5 text-gray-500">tom@example.com</div>
+
+                <div class="mt-3 space-y-1">
+                    <!-- Account Management -->
+                    <x-jet-responsive-nav-link href="{{ route('dashboard:index') }}" :active="request()->routeIs('dashboard:index')">
+                        {{ __('Dashboard') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+                        {{ __('Profile') }}
+                    </x-jet-responsive-nav-link>
+
+                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                        <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
+                            {{ __('API Tokens') }}
+                        </x-jet-responsive-nav-link>
+                    @endif
+
+                <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-jet-responsive-nav-link href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                            {{ __('Logout') }}
+                        </x-jet-responsive-nav-link>
+                    </form>
+
+                    <!-- Team Management -->
+                    @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                        <div class="border-t border-gray-200"></div>
+
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Manage Team') }}
+                        </div>
+
+                        <!-- Team Settings -->
+                        <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
+                            {{ __('Team Settings') }}
+                        </x-jet-responsive-nav-link>
+
+                        <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
+                            {{ __('Create New Team') }}
+                        </x-jet-responsive-nav-link>
+
+                        <div class="border-t border-gray-200"></div>
+
+                        <!-- Team Switcher -->
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Switch Teams') }}
+                        </div>
+
+                        @foreach (Auth::user()->allTeams() as $team)
+                            <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
+                        @endforeach
+                    @endif
                 </div>
             </div>
-            <div class="mt-3 space-y-1" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-
-                <a href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
-                    Your Profile
-                </a>
-
-                <a href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
-                    Settings
-                </a>
-
-                <a href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
-                    Sign out
-                </a>
-
-            </div>
-        </div>
+        @endauth
     </div>
 </nav>

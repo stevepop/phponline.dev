@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
+use App\Models\Bookmark;
 use App\Models\Event;
 use App\Models\Link;
 use App\Models\UserGroup;
@@ -24,5 +25,9 @@ class DatabaseSeeder extends Seeder
         Link::factory(50)->create();
         UserGroup::factory(50)->create();
         Event::factory(89)->create();
+
+        Bookmark::factory(200)->create();
+
+        $this->call(FeedSeeder::class);
     }
 }

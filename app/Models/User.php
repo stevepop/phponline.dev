@@ -90,6 +90,14 @@ class User extends Authenticatable implements Sluggable
         );
     }
 
+    public function bookmarks(): HasMany
+    {
+        return $this->hasMany(
+            Bookmark::class,
+            'user_id',
+        );
+    }
+
     /**
      * @return HasMany
      */

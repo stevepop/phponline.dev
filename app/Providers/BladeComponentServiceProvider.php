@@ -38,6 +38,8 @@ class BladeComponentServiceProvider extends ServiceProvider
         Blade::component('components.icons.music', 'icon-music');
         Blade::component('components.icons.pencil', 'icon-pencil');
         Blade::component('components.icons.archive', 'icon-archive');
+        Blade::component('components.icons.bookmark', 'icon-bookmark');
+        Blade::component('components.icons.bookmark-alt', 'icon-bookmark-alt');
         Blade::component('components.icons.pencil-alt', 'icon-pencil-alt');
         Blade::component('components.icons.microphone', 'icon-microphone');
         Blade::component('components.icons.packagist', 'icon-packagist');
