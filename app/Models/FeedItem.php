@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\CanBeClicked;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class FeedItem extends Model
 {
     use HasFactory;
+    use CanBeClicked;
 
     protected $fillable = [
         'title',
@@ -34,6 +36,13 @@ class FeedItem extends Model
     }
 
     // Model Methods
+    /**
+     * @return string
+     */
+    public function getClickableValue(): string
+    {
+        return $this->website;
+    }
 
     // New Builder
 

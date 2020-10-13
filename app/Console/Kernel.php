@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\Feeds\ImportFeedItemsCommand;
 use App\Console\Commands\Podcasts\PublishScheduledPodcastsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -21,6 +22,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(PublishScheduledEventsCommand::class)->hourly();
         $schedule->command(PublishScheduledPackagesCommand::class)->hourly();
         $schedule->command(PublishScheduledPodcastsCommand::class)->hourly();
+        $schedule->command(ImportFeedItemsCommand::class)->hourly();
     }
 
     protected function commands()

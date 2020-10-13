@@ -102,6 +102,23 @@ Route::prefix('user-groups')->as('user-groups:')->group(function () {
  * @todo Admin Tasks
  */
 
+
+/**
+ * Profile Routes
+ */
+Route::prefix('users')->as('users:')->group(function () {
+
+    /**
+     * Show a Users Profile
+     */
+    Route::get('{profile}', \App\Http\Controllers\Frontend\Profiles\ShowAction::class)->name('profile');
+
+    /**
+     * Show a Users Profile Feed
+     */
+    Route::get('{profile}/{feed}', \App\Http\Controllers\Frontend\Profiles\Feed\ShowAction::class)->name('feed');
+});
+
 /**
  * Show all Blog Posts
  */

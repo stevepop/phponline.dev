@@ -10,6 +10,7 @@ class CreateFeedsTable extends Migration
     {
         Schema::create('feeds', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
             $table->string('url');
             $table->boolean('approved')->default(false);
             $table->unsignedBigInteger('profile_id');
