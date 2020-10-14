@@ -23,7 +23,7 @@
             <x-site-nav />
 
             <!-- Page Content -->
-            <main>
+            <main class="pt-16 relative">
                 {{ $slot }}
             </main>
 

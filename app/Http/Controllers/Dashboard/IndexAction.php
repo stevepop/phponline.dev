@@ -16,6 +16,7 @@ class IndexAction extends Controller
             'packages',
             'links',
             'bookmarks',
+            'profile.feeds'
         ])->find(auth()->user()->id);
 
         return view('dashboard.index', compact('user'));

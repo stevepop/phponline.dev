@@ -1,6 +1,6 @@
 <x-app-layout>
-    <x-app-header class="py-6 bg-red-500 mb-12">
-        <h2 class="text-2xl leading-9 font-semibold tracking-tight text-gray-900 md:text-3xl md:leading-10">
+    <x-app-header class="py-6 bg-gray-900 mb-12">
+        <h2 class="text-2xl leading-9 font-semibold tracking-tight text-white md:text-3xl md:leading-10">
             <span class="block">Welcome back, {{ auth()->user()->name }}</span>
         </h2>
     </x-app-header>
@@ -10,14 +10,14 @@
             Your Stats
         </h2>
 
-        <ul class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-4 mt-3 mb-12" x-max="1">
+        <ul class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-5 mt-3 mb-12" x-max="1">
 
             <x-app-stat-card>
                 <x-slot name="icon">
                     <x-icon-pencil-alt class="h-6 w-6"/>
                 </x-slot>
                 <x-slot name="title">
-                    <a href="#"
+                    <a href="{{ route('dashboard:articles') }}"
                        class="text-gray-900 font-medium hover:text-gray-600 transition ease-in-out duration-150">
                         Your Posts
                     </a>
@@ -32,7 +32,7 @@
                     <x-icon-microphone class="h-6 w-6"/>
                 </x-slot>
                 <x-slot name="title">
-                    <a href="#"
+                    <a href="{{ route('dashboard:podcasts') }}"
                        class="text-gray-900 font-medium hover:text-gray-600 transition ease-in-out duration-150">
                         Your Podcasts
                     </a>
@@ -47,7 +47,7 @@
                     <x-icon-archive class="h-6 w-6"/>
                 </x-slot>
                 <x-slot name="title">
-                    <a href="#"
+                    <a href="{{ route('dashboard:packages') }}"
                        class="text-gray-900 font-medium hover:text-gray-600 transition ease-in-out duration-150">
                         Your Packages
                     </a>
@@ -62,12 +62,27 @@
                     <x-icon-link-external class="h-6 w-6"/>
                 </x-slot>
                 <x-slot name="title">
-                    <a href="#"
+                    <a href="{{ route('dashboard:links') }}"
                        class="text-gray-900 font-medium hover:text-gray-600 transition ease-in-out duration-150">
                         Your Links
                     </a>
                     <p class="text-gray-500">
                         {{ $user->links->count() }} in total
+                    </p>
+                </x-slot>
+            </x-app-stat-card>
+
+            <x-app-stat-card>
+                <x-slot name="icon">
+                    <x-icon-rss class="h-6 w-6"/>
+                </x-slot>
+                <x-slot name="title">
+                    <a href="{{ route('dashboard:feeds') }}"
+                       class="text-gray-900 font-medium hover:text-gray-600 transition ease-in-out duration-150">
+                        Your Feeds
+                    </a>
+                    <p class="text-gray-500">
+                        {{ $user->profile->feeds->count() }} in total
                     </p>
                 </x-slot>
             </x-app-stat-card>
@@ -98,8 +113,11 @@
                                 $name = 'Package';
                                 $route = route('packages:show', [$bookmark->bookmarkable->slug]);
                             @endphp
-                        @case('Package')
-
+                        @case('Podcast')
+                            @php
+                                $name = 'Podcast';
+                                $route = route('click:track', [$bookmark->bookmarkable->clicks->uuid]);
+                            @endphp
                         @break
                     @endswitch
                     <li class="relative pl-4 pr-6 py-5 hover:bg-gray-50 sm:py-6 sm:pl-6 lg:pl-8 xl:pl-6">

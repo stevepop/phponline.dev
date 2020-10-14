@@ -15,8 +15,10 @@ class LatestPodcasts extends Component
 
     public function mount()
     {
-        $this->podcasts = Podcast::with(['submittedByUser', 'clicks'])
-            ->published()->latest('publish_date')->take(4)->get();
+        $this->podcasts = Podcast::with([
+            'submittedByUser', 'clicks'
+        ])->published()->latest('publish_date')
+            ->take(4)->get();
     }
 
     public function render()

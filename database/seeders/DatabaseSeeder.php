@@ -26,8 +26,10 @@ class DatabaseSeeder extends Seeder
         UserGroup::factory(50)->create();
         Event::factory(89)->create();
 
-        Bookmark::factory(200)->create();
-
         $this->call(FeedSeeder::class);
+
+
+        // Finally Add some fake bookmarks for dev
+        Bookmark::factory(1000)->create();
     }
 }

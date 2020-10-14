@@ -33,6 +33,7 @@ class BladeComponentServiceProvider extends ServiceProvider
         Blade::component('components.logo-image', 'logo-image');
         Blade::component('components.logo-text', 'logo-text');
 
+        Blade::component('components.icons.rss', 'icon-rss');
         Blade::component('components.icons.link', 'icon-link');
         Blade::component('components.icons.link-external', 'icon-link-external');
         Blade::component('components.icons.music', 'icon-music');
@@ -46,6 +47,12 @@ class BladeComponentServiceProvider extends ServiceProvider
 
 
         /**
+         * Illustration Components
+         */
+        Blade::component('components.illustrations.working', 'illustration-working');
+
+
+        /**
          * Site Components
          */
         Blade::component('components.site.site-nav', 'site-nav');
@@ -54,6 +61,7 @@ class BladeComponentServiceProvider extends ServiceProvider
         /**
          * Structural Components
          */
+        Blade::component('components.structure.link', 'app-link');
         Blade::component('components.structure.container', 'app-container');
         Blade::component('components.structure.header', 'app-header');
         Blade::component('components.structure.simple-cta', 'app-simple-cta');

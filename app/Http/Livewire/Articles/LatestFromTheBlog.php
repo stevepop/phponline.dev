@@ -17,7 +17,7 @@ class LatestFromTheBlog extends Component
         $this->articles = Article::with(['tags', 'submittedByUser', 'category'])
             ->published()->whereHas('category', function (Builder $builder) {
             $builder->where('slug', Category::NEWS);
-        })->latest('publish_date')->take(4)->get();
+        })->latest('publish_date')->take(3)->get();
     }
 
     public function render()

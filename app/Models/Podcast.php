@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Builders\PodcastBuilder;
+use App\Models\Concerns\CanBeBookmarked;
 use App\Models\Concerns\CanBeClicked;
 use App\Models\Concerns\HasSlug;
 use App\Models\Concerns\Sluggable;
@@ -15,6 +16,7 @@ class Podcast extends Model implements Sluggable
     use HasSlug;
     use HasFactory;
     use CanBeClicked;
+    use CanBeBookmarked;
 
     protected $fillable = [
         'title',
@@ -60,6 +62,18 @@ class Podcast extends Model implements Sluggable
     public function getClickableValue(): string
     {
         return $this->external_url;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getCoverImageAttribute(): string
+    {
+        if (collect($this->json)->has('image') && $this->json['image'] !== "") {
+            return $this->json['image'];
+        }
+
+        return 'https://ui-avatars.com/api/?name='.urlencode($this->title).'&color=7F9CF5&background=EBF4FF';
     }
 
     // New Builder

@@ -11,6 +11,62 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->as('dashbo
      * Main Dashboard
      */
     Route::get('/', \App\Http\Controllers\Dashboard\IndexAction::class)->name('index');
+
+
+    /**
+     * Dashboard Packages
+     */
+    Route::prefix('packages')->group(function () {
+
+        /**
+         * Packages
+         */
+        Route::get('/', \App\Http\Controllers\Dashboard\Packages\IndexAction::class)->name('packages');
+    });
+
+    /**
+     * Dashboard Podcasts
+     */
+    Route::prefix('podcasts')->group(function () {
+
+        /**
+         * Podcasts
+         */
+        Route::get('/', \App\Http\Controllers\Dashboard\Podcasts\IndexAction::class)->name('podcasts');
+    });
+
+    /**
+     * Dashboard Articles
+     */
+    Route::prefix('articles')->group(function () {
+
+        /**
+         * Articles
+         */
+        Route::get('/', \App\Http\Controllers\Dashboard\Articles\IndexAction::class)->name('articles');
+    });
+
+    /**
+     * Dashboard Links
+     */
+    Route::prefix('links')->group(function () {
+
+        /**
+         * Links
+         */
+        Route::get('/', \App\Http\Controllers\Dashboard\Links\IndexAction::class)->name('links');
+    });
+
+    /**
+     * Dashboard Feeds
+     */
+    Route::prefix('feeds')->group(function () {
+
+        /**
+         * Feeds
+         */
+        Route::get('/', \App\Http\Controllers\Dashboard\Feeds\IndexAction::class)->name('feeds');
+    });
 });
 
 

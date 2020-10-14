@@ -16,13 +16,6 @@ return [
     'nav' => [
 
         'main' => [
-
-            [
-                'name' => 'Blog',
-                'link' => '/blog',
-                'title' => 'View our Blog',
-                'pattern' => 'articles:index'
-            ],
             [
                 'name' => 'Tutorials',
                 'link' => '/category/tutorials',
@@ -34,12 +27,6 @@ return [
                 'link' => '/packages',
                 'title' => 'View our Packages',
                 'pattern' => 'packages:index'
-            ],
-            [
-                'name' => 'User Groups',
-                'link' => '/user-groups',
-                'title' => 'View our User Groups',
-                'pattern' => 'user-groups:index'
             ],
             [
                 'name' => 'Podcasts',
