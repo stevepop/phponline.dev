@@ -24,6 +24,16 @@ class BookmarkButton extends Component
     public int $identifier;
 
     /**
+     * @var string|null
+     */
+    public ?string $color;
+
+    /**
+     * @var string|null
+     */
+    public ?string $hover;
+
+    /**
      * @var bool
      */
     public bool $bookmarked = false;
@@ -54,11 +64,14 @@ class BookmarkButton extends Component
         });
     }
 
-    public function mount(Model $model)
+    public function mount(Model $model, string $color = null, string $hover = null)
     {
         $this->model = get_class($model);
         $this->identifier = $model->id;
         $this->original = $model;
+
+        $this->color = $color;
+        $this->hover = $hover;
 
         $this->loadBookmarks();;
     }

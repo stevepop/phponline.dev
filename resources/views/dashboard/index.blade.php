@@ -113,6 +113,7 @@
                                 $name = 'Package';
                                 $route = route('packages:show', [$bookmark->bookmarkable->slug]);
                             @endphp
+                        @break
                         @case('Podcast')
                             @php
                                 $name = 'Podcast';
@@ -145,6 +146,9 @@
                                         @break
                                         @case('Package')
                                             <x-icon-archive class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
+                                        @break
+                                        @case('Podcast')
+                                            <x-icon-microphone class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
                                         @break
                                     @endswitch
                                     <div

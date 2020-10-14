@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Article;
-use App\Models\Bookmark;
-use App\Models\Event;
 use App\Models\Feed;
-use App\Models\FeedItem;
 use App\Models\Link;
+use App\Models\User;
+use App\Models\Event;
+use App\Models\Article;
 use App\Models\Package;
 use App\Models\Podcast;
-use App\Models\User;
+use App\Models\Bookmark;
+use App\Models\FeedItem;
 use App\Models\UserGroup;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BookmarkFactory extends Factory
 {

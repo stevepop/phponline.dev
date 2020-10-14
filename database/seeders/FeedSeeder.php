@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Profile;
-use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class FeedSeeder extends Seeder
 {
@@ -24,5 +25,7 @@ class FeedSeeder extends Seeder
                 'approved' => true
             ]);
         });
+
+        Artisan::call('feeds:import');
     }
 }

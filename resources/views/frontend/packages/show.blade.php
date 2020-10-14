@@ -1,6 +1,6 @@
 <x-app-layout>
-    <x-app-header class="py-6 bg-red-500 mb-12">
-        <h2 class="text-3xl leading-9 font-semibold tracking-tight text-gray-900 md:text-4xl md:leading-10">
+    <x-app-header class="py-6 bg-gray-900 mb-12">
+        <h2 class="text-3xl leading-9 font-semibold tracking-tight text-white md:text-4xl md:leading-10">
             <span class="block">
                 {{ $package->title }}
             </span>

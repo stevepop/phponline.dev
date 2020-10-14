@@ -6,7 +6,7 @@
     </x-app-header>
     <x-app-container class="mb-12">
 
-        <livewire:dashboard.packages.manage />
+        <livewire:dashboard.feeds.manage />
 
     </x-app-container>
 </x-app-layout>

@@ -1,4 +1,7 @@
-<div class="inline-flex space-x-3 cursor-pointer" wire:click="toggle">
+<div
+    class="inline-flex space-x-3 cursor-pointer text-{{ isset($color) ? $color : 'white' }} hover:text-{{ isset($hover) ? $hover : 'gray-100' }}"
+    wire:click="toggle"
+>
     @if ($bookmarked)
         <span>Remove bookmark</span>
         <x-icon-bookmark-alt class="h-6 w-6" />

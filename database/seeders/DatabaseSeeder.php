@@ -2,13 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Link;
+use App\Models\Event;
 use App\Models\Article;
 use App\Models\Bookmark;
-use App\Models\Event;
-use App\Models\Link;
 use App\Models\UserGroup;
-use Database\Factories\TagFactory;
 use Illuminate\Database\Seeder;
+use Database\Factories\TagFactory;
+use Database\Seeders\BookmarkSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,10 +27,12 @@ class DatabaseSeeder extends Seeder
         UserGroup::factory(50)->create();
         Event::factory(89)->create();
 
-        $this->call(FeedSeeder::class);
+        $this->call([
+            FeedSeeder::class,
+        ]);
 
-
-        // Finally Add some fake bookmarks for dev
-        Bookmark::factory(1000)->create();
+        $this->call([
+            BookmarkSeeder::class,
+        ]);
     }
 }

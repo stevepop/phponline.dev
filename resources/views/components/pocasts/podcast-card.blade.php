@@ -2,7 +2,7 @@
     <div>
         <img class="w-96 h-56 rounded hidden md:block bg-gray-900" src="{{ $podcast->cover_image }}" alt="{{ $podcast->title }}" />
     </div>
-    <div class="w-full p-8 flex flex-col items-center justify-center">
+    <div class="w-full p-8 flex flex-col items-center justify-center space-y-3">
         <h3 class="text-2xl text-grey-darkest font-medium">
             {{ $podcast->title }}
         </h3>
@@ -13,6 +13,13 @@
                 {{ $podcast->external_url }}
             </p>
         </a>
+        @auth
+            <livewire:user.bookmark-button
+                :model="$podcast"
+                color="gray-900"
+                hover="gray-400"
+            />
+        @endauth
     </div>
 </div>
 
