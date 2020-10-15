@@ -101,6 +101,9 @@
             <ul class="relative z-0 divide-y divide-gray-200 border-b border-gray-200">
 
                 @forelse($user->bookmarks as $bookmark)
+
+{{--                    {{ dd($bookmark) }}--}}
+
                     @switch($bookmark->displayName())
                         @case('Article')
                             @php
@@ -120,6 +123,12 @@
                                 $route = route('click:track', [$bookmark->bookmarkable->clicks->uuid]);
                             @endphp
                         @break
+                        @case('Event')
+                        @php
+                            $name = 'Event';
+                            $route = route('click:track', [$bookmark->bookmarkable->clicks->uuid]);
+                        @endphp
+                        @break
                     @endswitch
                     <li class="relative pl-4 pr-6 py-5 hover:bg-gray-50 sm:py-6 sm:pl-6 lg:pl-8 xl:pl-6">
                         <div class="flex items-center justify-between space-x-4">
@@ -134,7 +143,7 @@
                                         <h2 class="text-sm font-medium leading-5">
                                             <a href="{{ $route }}">
                                                 <span class="absolute inset-0"></span>
-                                                {{ $bookmark->bookmarkable->title }}
+                                                {{ $bookmark->bookmarkable }}
                                             </a>
                                         </h2>
                                     </span>

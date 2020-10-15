@@ -9,8 +9,8 @@ class PackageSeeder extends Seeder
 {
     private $packages = [
         [
-            'title' => 'Adorable Avatars',
-            'external_url' => 'https://packagist.org/packages/juststeveking/adorable-avatars',
+            'title' => 'URI Builder',
+            'external_url' => 'https://packagist.org/packages/juststeveking/uri-builder',
         ],
         [
             'title' => 'Companies House Laravel',

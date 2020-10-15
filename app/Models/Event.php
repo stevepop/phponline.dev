@@ -47,6 +47,14 @@ class Event extends Model implements Sluggable
     }
 
     /**
+     * @return string
+     */
+    public function getClickableValue(): string
+    {
+        return $this->external_url;
+    }
+
+    /**
      * @param \Illuminate\Database\Query\Builder $query
      * @return EventBuilder
      */
