@@ -25,7 +25,6 @@ class BookmarkFactory extends Factory
             Article::class,
             Event::class,
             Feed::class,
-            FeedItem::class,
             Link::class,
             Package::class,
             Podcast::class,

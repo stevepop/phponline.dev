@@ -102,13 +102,29 @@
 
                 @forelse($user->bookmarks as $bookmark)
 
-{{--                    {{ dd($bookmark) }}--}}
-
                     @switch($bookmark->displayName())
                         @case('Article')
                             @php
                                 $name = 'Article';
                                 $route = route('articles:show', [$bookmark->bookmarkable->slug]);
+                            @endphp
+                        @break
+                        @case('Event')
+                            @php
+                                $name = 'Event';
+                                $route = route('click:track', [$bookmark->bookmarkable->clicks->uuid]);
+                            @endphp
+                        @break
+                        @case('Feed')
+                            @php
+                                $name = 'Feed';
+                                $route = route('click:track', [$bookmark->bookmarkable->clicks->uuid]);
+                            @endphp
+                        @break
+                        @case('Link')
+                            @php
+                                $name = 'Link';
+                                $route = route('click:track', [$bookmark->bookmarkable->clicks->uuid]);
                             @endphp
                         @break
                         @case('Package')
@@ -123,13 +139,14 @@
                                 $route = route('click:track', [$bookmark->bookmarkable->clicks->uuid]);
                             @endphp
                         @break
-                        @case('Event')
-                        @php
-                            $name = 'Event';
-                            $route = route('click:track', [$bookmark->bookmarkable->clicks->uuid]);
-                        @endphp
+                        @case('UserGroup')
+                            @php
+                                $name = 'User Group';
+                                $route = route('click:track', [$bookmark->bookmarkable->clicks->uuid]);
+                            @endphp
                         @break
                     @endswitch
+
                     <li class="relative pl-4 pr-6 py-5 hover:bg-gray-50 sm:py-6 sm:pl-6 lg:pl-8 xl:pl-6">
                         <div class="flex items-center justify-between space-x-4">
                             <!-- Repo name and link -->
@@ -143,7 +160,7 @@
                                         <h2 class="text-sm font-medium leading-5">
                                             <a href="{{ $route }}">
                                                 <span class="absolute inset-0"></span>
-                                                {{ $bookmark->bookmarkable }}
+                                                {{ $bookmark->bookmarkable->title ?? $bookmark->bookmarkable->url }}
                                             </a>
                                         </h2>
                                     </span>
@@ -153,15 +170,28 @@
                                         @case('Article')
                                             <x-icon-pencil-alt class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
                                         @break
+                                        @case('Event')
+                                            <x-icon-calendar class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
+                                        @break
+                                        @case('Feed')
+                                            <x-icon-rss class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
+                                        @break
+                                        @case('Link')
+                                            <x-icon-link-external class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
+                                        @break
                                         @case('Package')
                                             <x-icon-archive class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
                                         @break
                                         @case('Podcast')
                                             <x-icon-microphone class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
                                         @break
+                                        @case('User Group')
+                                            <x-icon-users class="flex-shrink-0 w-5 h-5 text-gray-400 group-hover:text-gray-500" />
+                                        @break
                                     @endswitch
                                     <div
-                                        class="text-sm leading-5 text-gray-500 group-hover:text-gray-900 font-medium truncate">
+                                        class="text-sm leading-5 text-gray-500 group-hover:text-gray-900 font-medium truncate"
+                                    >
                                         {{ $name }}
                                     </div>
                                 </a>

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Concerns\CanBeBookmarked;
 use App\Models\Concerns\CanBeClicked;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +11,6 @@ class FeedItem extends Model
 {
     use HasFactory;
     use CanBeClicked;
-    use CanBeBookmarked;
 
     protected $fillable = [
         'title',
