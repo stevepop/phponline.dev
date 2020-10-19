@@ -35,7 +35,9 @@ class BladeComponentServiceProvider extends ServiceProvider
 
         Blade::component('components.icons.rss', 'icon-rss');
         Blade::component('components.icons.link', 'icon-link');
+        Blade::component('components.icons.share', 'icon-share');
         Blade::component('components.icons.users', 'icon-users');
+        Blade::component('components.icons.trash', 'icon-trash');
         Blade::component('components.icons.link-external', 'icon-link-external');
         Blade::component('components.icons.music', 'icon-music');
         Blade::component('components.icons.calendar', 'icon-calendar');
@@ -84,6 +86,7 @@ class BladeComponentServiceProvider extends ServiceProvider
          * Package Components
          */
         Blade::component(PackageCard::class, 'app-package-card');
+        Blade::component(\App\View\Components\Packages\Manage\PackageCard::class, 'app-manage-package-card');
 
         /**
          * Podcasts Components

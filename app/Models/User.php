@@ -28,6 +28,7 @@ class User extends Authenticatable implements Sluggable
         'email',
         'password',
         'admin',
+        'can_guest_post',
         'twitter_handle',
     ];
 
@@ -40,7 +41,8 @@ class User extends Authenticatable implements Sluggable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'admin' => 'boolean'
+        'admin' => 'boolean',
+        'can_guest_post' => 'boolean'
     ];
 
     protected $appends = [

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Profiles\Feed;
 
 use App\Http\Controllers\Controller;
 use App\Models\Feed;
+use App\Models\FeedItem;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,8 @@ class ShowAction extends Controller
             abort(404);
         }
 
-        $feed->load(['items']);
+        $items = FeedItem::where('feed_id', $feed->id)->paginate();
 
-        return view('frontend.profiles.feeds.show', compact('profile', 'feed'));
+        return view('frontend.profiles.feeds.show', compact('profile', 'feed', 'items'));
     }
 }

@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('twitter_handle')->nullable();
 
             $table->boolean('admin')->default(0);
+            $table->boolean('can_guest_post')->default(0);
 
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();

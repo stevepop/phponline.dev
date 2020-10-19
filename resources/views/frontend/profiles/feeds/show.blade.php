@@ -17,11 +17,15 @@
 
     <x-app-container>
         <section class="mb-12">
-            @forelse($feed->items as $item)
+            @forelse($items as $item)
                 <livewire:profile.feed-card :item="$item" />
             @empty
                 <p>This feed has no items yet</p>
             @endforelse
         </section>
+
+        <div class="mb-12">
+            {{ $items->links() }}
+        </div>
     </x-app-container>
 </x-app-layout>

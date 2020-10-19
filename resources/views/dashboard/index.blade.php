@@ -10,22 +10,27 @@
             Your Stats
         </h2>
 
-        <ul class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-5 mt-3 mb-12" x-max="1">
+        <ul
+            class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-5 mt-3 mb-12"
+            x-max="1"
+        >
 
-            <x-app-stat-card>
-                <x-slot name="icon">
-                    <x-icon-pencil-alt class="h-6 w-6"/>
-                </x-slot>
-                <x-slot name="title">
-                    <a href="{{ route('dashboard:articles') }}"
-                       class="text-gray-900 font-medium hover:text-gray-600 transition ease-in-out duration-150">
-                        Your Posts
-                    </a>
-                    <p class="text-gray-500">
-                        {{ $user->articles->count() }} in total
-                    </p>
-                </x-slot>
-            </x-app-stat-card>
+            @can('create', \App\Models\Article::class)
+                <x-app-stat-card>
+                    <x-slot name="icon">
+                        <x-icon-pencil-alt class="h-6 w-6"/>
+                    </x-slot>
+                    <x-slot name="title">
+                        <a href="{{ route('dashboard:articles') }}"
+                           class="text-gray-900 font-medium hover:text-gray-600 transition ease-in-out duration-150">
+                            Your Posts
+                        </a>
+                        <p class="text-gray-500">
+                            {{ $user->articles->count() }} in total
+                        </p>
+                    </x-slot>
+                </x-app-stat-card>
+            @endcan
 
             <x-app-stat-card>
                 <x-slot name="icon">
