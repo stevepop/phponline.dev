@@ -10,7 +10,7 @@ class ShowAction extends Controller
 {
     public function __invoke(Request $request, Article $article)
     {
-        $article->load(['category', 'tags', 'submittedByUser']);
+        $article->load(['category', 'tags', 'submittedByUser.profile']);
 
         return view('frontend.articles.show', compact('article'));
     }

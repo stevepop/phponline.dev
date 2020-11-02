@@ -5,12 +5,29 @@ namespace App\Http\Livewire\Dashboard\Feeds;
 use App\Models\Feed;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Http\Livewire\Concerns\HasModal;
 
 class Manage extends Component
 {
-    use HasModal;
     use WithPagination;
+
+    public ?string $url;
+
+    protected array $rules = [
+        'url' => ['required', 'string', 'url']
+    ];
+
+    public function save()
+    {
+        $this->validate();
+
+        auth()->user()->profile->feeds()->create([
+            'url' => $this->url
+        ]);
+
+        $this->url = null;
+
+        $this->resetPage();
+    }
 
     public function render()
     {

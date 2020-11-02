@@ -34,6 +34,7 @@ class BladeComponentServiceProvider extends ServiceProvider
         Blade::component('components.logo-text', 'logo-text');
 
         Blade::component('components.icons.rss', 'icon-rss');
+        Blade::component('components.icons.plus', 'icon-plus');
         Blade::component('components.icons.link', 'icon-link');
         Blade::component('components.icons.share', 'icon-share');
         Blade::component('components.icons.users', 'icon-users');
