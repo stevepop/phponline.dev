@@ -16,6 +16,12 @@ class Manage extends Component
         'url' => ['required', 'string', 'url']
     ];
 
+    public function remove(int $id)
+    {
+        $feed = Feed::find($id);
+        $feed->delete();
+    }
+
     public function save()
     {
         $this->validate();

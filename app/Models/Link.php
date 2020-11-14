@@ -79,6 +79,14 @@ class Link extends Model implements Sluggable
     }
 
     /**
+     * @return string
+     */
+    public function getClickableValue(): string
+    {
+        return $this->url;
+    }
+
+    /**
      * @param \Illuminate\Database\Query\Builder $query
      * @return LinkBuilder
      */
