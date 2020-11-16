@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Components\Articles\ArticleCard;
+use App\View\Components\Packages\DependencyList;
 use App\View\Components\Packages\PackageCard;
 use App\View\Components\Pocasts\PodcastCard;
 use Illuminate\Support\Facades\Blade;
@@ -87,6 +88,7 @@ class BladeComponentServiceProvider extends ServiceProvider
          * Package Components
          */
         Blade::component(PackageCard::class, 'app-package-card');
+        Blade::component(DependencyList::class, 'app-package-dependency-list');
         Blade::component(\App\View\Components\Packages\Manage\PackageCard::class, 'app-manage-package-card');
 
         /**

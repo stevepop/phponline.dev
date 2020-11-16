@@ -48,9 +48,9 @@ class FetchPackageData implements ShouldQueue
         $releases = collect($metaData['packages'][$this->package]);
 
         $this->model->update([
-            'title' => $releases->first()['name'],
-            'body' => $releases->first()['description'],
-            'json' => $releases->first()
+            'title' => $releases->last()['name'],
+            'body' => $releases->last()['description'],
+            'json' => $releases->last()
         ]);
     }
 }

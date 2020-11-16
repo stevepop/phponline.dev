@@ -17,8 +17,8 @@ class PackageSeeder extends Seeder
             'external_url' => 'https://packagist.org/packages/juststeveking/companies-house-laravel',
         ],
         [
-            'title' => 'Config',
-            'external_url' => 'https://packagist.org/packages/juststeveking/config',
+            'title' => 'PHP SDK',
+            'external_url' => 'https://packagist.org/packages/juststeveking/php-sdk',
         ],
         [
             'title' => 'Cypher Query Builder',

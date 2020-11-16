@@ -48,13 +48,13 @@
 
             <section class="mb-12">
                 <div class="w-full text-md leading-7 text-gray-700">
-                    {!! $article->excerpt !!}
+                    <x-markdown>{!! $article->excerpt !!}</x-markdown>
                 </div>
             </section>
 
             <section class="mb-12">
                 <div class="w-full text-md leading-7 text-gray-700">
-                    {!! $article->body !!}
+                    <x-markdown>{!! $article->body !!}</x-markdown>
                 </div>
             </section>
         </article>

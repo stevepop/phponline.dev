@@ -20,7 +20,9 @@
 
     <x-app-container>
         <section class="my-12">
-            {{ $package->body }}
+            <div class="w-full text-md leading-7 text-gray-700">
+                <x-markdown>{!! $package->body !!}</x-markdown>
+            </div>
         </section>
 
         @if(! is_null($package->json))
@@ -78,73 +80,17 @@
             </section>
 
             <section class="my-12">
-                <div class="bg-white lg:min-w-0 lg:flex-1">
-                    <div class="pl-4 pr-6 pt-4 pb-4 border-b border-t border-gray-200 sm:pl-6 lg:pl-8 xl:pl-6 xl:pt-6 xl:border-t-0">
-                        <div class="flex items-center">
-                            <h3 class="flex-1 text-lg leading-7 font-medium">
-                                Required Dependencies
-                            </h3>
-                        </div>
-                    </div>
-
-                    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 p-6">
-{{--                        @foreach ($package->json['require'] as $package => $version)--}}
-{{--                            <li class="col-span-1 bg-white rounded-lg shadow">--}}
-{{--                                <div class="w-full flex items-center justify-between p-6 space-x-6">--}}
-{{--                                    <div class="flex-1 truncate">--}}
-{{--                                        <div class="flex items-center justify-between space-x-3">--}}
-{{--                                            <h3 class="text-gray-900 text-sm leading-5 font-medium truncate">--}}
-{{--                                                {{ $package }}--}}
-{{--                                            </h3>--}}
-{{--                                            <span class="flex-shrink-0 inline-block px-2 py-0.5 text-teal-800 text-xs leading-4 font-medium bg-teal-100 rounded-full">--}}
-{{--                                                {{ $version }}--}}
-{{--                                            </span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                        @endforeach--}}
-                    </ul>
-                </div>
+                <x-app-package-dependency-list
+                    title="Required Dependencies"
+                    :dependencies="$package->json['require']"
+                />
             </section>
 
             <section class="my-12">
-                <div class="bg-white lg:min-w-0 lg:flex-1">
-                    <div class="pl-4 pr-6 pt-4 pb-4 border-b border-t border-gray-200 sm:pl-6 lg:pl-8 xl:pl-6 xl:pt-6 xl:border-t-0">
-                        <div class="flex items-center">
-                            <h3 class="flex-1 text-lg leading-7 font-medium">
-                                Development Dependencies
-                            </h3>
-                        </div>
-                    </div>
-
-                    {{ dd($package) }}
-
-                    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 p-6">
-{{--                        @foreach ($package->json['require-dev'] as $package => $version)--}}
-{{--                            <li class="col-span-1 bg-white rounded-lg shadow">--}}
-{{--                                <div class="w-full flex items-center justify-between p-6 space-x-6">--}}
-{{--                                    <div class="flex-1 truncate">--}}
-{{--                                        <div class="flex items-center justify-between space-x-3">--}}
-{{--                                            <h3 class="text-gray-900 text-sm leading-5 font-medium truncate">--}}
-{{--                                                {{ $package }}--}}
-{{--                                            </h3>--}}
-{{--                                            <span class="flex-shrink-0 inline-block px-2 py-0.5 text-teal-800 text-xs leading-4 font-medium bg-teal-100 rounded-full">--}}
-{{--                                                {{ $version }}--}}
-{{--                                            </span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                        @endforeach--}}
-                    </ul>
-                </div>
-            </section>
-
-            <section class="my-12">
-{{--                @foreach ($package->json as $key => $value)--}}
-{{--                    <p>{{ $key}}</p>--}}
-{{--                @endforeach--}}
+                <x-app-package-dependency-list
+                    title="Development Dependencies"
+                    :dependencies="$package->json['require-dev']"
+                />
             </section>
         @endif
 
