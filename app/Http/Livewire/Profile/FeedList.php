@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Profile;
 
+use App\Models\Feed;
 use App\Models\Profile;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
@@ -16,7 +17,7 @@ class FeedList extends Component
     {
         $this->profile = $profile;
 
-        $this->feeds = $profile->feeds;
+        $this->feeds = Feed::where('profile_id', $profile->id)->where('approved', true)->get();
     }
 
     public function render()

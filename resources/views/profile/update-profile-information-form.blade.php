@@ -65,6 +65,13 @@
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
+
+        <!-- Twitter Handle -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="twitter_handle" value="{{ __('Twitter Handle') }}" />
+            <x-jet-input id="twitter_handle" type="text" class="mt-1 block w-full" wire:model.defer="state.twitter_handle" />
+            <x-jet-input-error for="twitter_handle" class="mt-2" />
+        </div>
     </x-slot>
 
     <x-slot name="actions">

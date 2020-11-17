@@ -19,7 +19,7 @@
                 src="{{ $article->submittedByUser->profile_photo_url }}"
                 class="w-8 h-8 object-cover rounded-full" alt="avatar"
             />
-            <a class="text-gray-700 text-sm mx-3" href="#">
+            <a class="text-gray-700 text-sm mx-3" href="{{ route('users:profile', $article->submittedByUser->profile->slug) }}">
                 {{ $article->submittedByUser->name }}
             </a>
         </div>

@@ -14,7 +14,7 @@ class LatestTutorials extends Component
 
     public function mount()
     {
-        $this->articles = Article::with(['tags', 'submittedByUser', 'category'])
+        $this->articles = Article::with(['tags', 'submittedByUser.profile', 'category'])
             ->published()->whereHas('category', function (Builder $builder) {
                 $builder->where('slug', Category::TUTORIALS);
             })->latest('publish_date')->take(4)->get();
