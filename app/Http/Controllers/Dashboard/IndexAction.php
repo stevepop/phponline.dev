@@ -15,7 +15,6 @@ class IndexAction extends Controller
             'podcasts',
             'packages',
             'links',
-            'bookmarks',
             'profile.feeds'
         ])->find(auth()->user()->id);
 
