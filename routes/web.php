@@ -44,6 +44,7 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->as('dashbo
          * Articles
          */
         Route::get('/', \App\Http\Controllers\Dashboard\Articles\IndexAction::class)->name('articles');
+        Route::get('/create', \App\Http\Controllers\Frontend\Articles\CreateAction::class)->name('articles.create');
     });
 
     /**

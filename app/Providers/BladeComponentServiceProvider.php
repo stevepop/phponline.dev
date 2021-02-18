@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Components\Articles\ArticleCard;
+use App\View\Components\Articles\ArticleForm;
 use App\View\Components\Packages\DependencyList;
 use App\View\Components\Packages\PackageCard;
 use App\View\Components\Pocasts\PodcastCard;
@@ -82,6 +83,7 @@ class BladeComponentServiceProvider extends ServiceProvider
          * Article Components
          */
         Blade::component(ArticleCard::class, 'app-article-card');
+        Blade::component(ArticleForm::class, 'app-article-form');
 
 
         /**
