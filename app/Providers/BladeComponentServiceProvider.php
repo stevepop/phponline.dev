@@ -83,9 +83,6 @@ class BladeComponentServiceProvider extends ServiceProvider
          * Article Components
          */
         Blade::component(ArticleCard::class, 'app-article-card');
-        Blade::component(ArticleForm::class, 'app-article-form');
-
-
         /**
          * Package Components
          */
