@@ -9,7 +9,7 @@
                             Title
                         </label>
                         <div class="mt-1 rounded-md shadow-sm">
-                            <input wire:model.lazy="article.title" type="text" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                            <input wire:model="title" type="text" class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                             @if($errors->has('title'))
                                 <div class="text-red-800">
                                     {{ $errors->first('title') }}
@@ -23,7 +23,7 @@
                         </label>
                         <div class="mt-1 rounded-md shadow-sm">
                             <textarea
-                                    wire:model.lazy="article.body"
+                                    wire:model="body"
                                     rows="15"
                                     class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                             </textarea>

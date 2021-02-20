@@ -7,18 +7,15 @@ use Livewire\Component;
 
 class CreateArticle extends Component
 {
-    public $article;
+    public $title;
+    public $body;
     public $success = false;
 
     protected $rules = [
-      'article.title' => 'required',
-      'article.body' => 'required|min:10',
+      'title' => 'required',
+      'body' => 'required|min:10',
     ];
 
-    public function mount()
-    {
-        $this->article = new Article();
-    }
     public function render()
     {
         return view('livewire.articles.create-article');
