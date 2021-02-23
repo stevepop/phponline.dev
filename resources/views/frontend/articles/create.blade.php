@@ -7,6 +7,6 @@
         </h2>
     </x-app-header>
     <x-app-container>
-        @livewire('articles.create-article')
+        @livewire('articles.article-form')
     </x-app-container>
 </x-app-layout>
