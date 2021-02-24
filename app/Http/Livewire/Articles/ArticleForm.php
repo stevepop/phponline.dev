@@ -4,17 +4,34 @@ namespace App\Http\Livewire\Articles;
 
 use App\Models\Article;
 use Livewire\Component;
+use App\Models\Category;
+use Illuminate\Support\Str;
 
 class ArticleForm extends Component
 {
-    public $title;
-    public $body;
+    public $article;
+    public $categories;
+    public $levels;
     public $success = false;
 
     protected $rules = [
-      'title' => 'required',
-      'body' => 'required|min:10',
+      'article.title' => 'required',
+      'article.body' => 'required|min:10',
+      'article.category_id' => 'required',
+      'article.level' => 'required'
     ];
+
+    public function mount()
+    {
+        $this->article = new Article();
+        $this->categories = Category::all();
+        $this->levels = [
+            'beginner' => 'Beginner',
+            'intermediate' => 'Intermediate',
+            'advanced' => 'Advanced'
+        ];
+
+    }
 
     public function render()
     {
@@ -23,11 +40,15 @@ class ArticleForm extends Component
 
     public function saveArticle()
     {
+
         $this->validate();
 
-        $this->success = true;
-        \Log::debug('data', ['title' => $this->title, 'body' => $this->body]);
-        $this->title = null;
-        $this->body = null;
+        $this->article->slug = Str::slug($this->article->title);
+        $this->article->excerpt = Str::words($this->article->title, 10);
+        $this->article->submitted_by_user_id = auth()->user()->id;
+        $this->article->save();
+
+       
+        return redirect()->route('categories:show', ['category' => 'tutorials']);
     }
 }
