@@ -29,8 +29,10 @@
                               <div x-data="{ trix: @entangle('article.body').defer }">
                                     <input id="body" name="body" type="hidden" value="{{ $article->body }}" />
                                     <div wire:ignore>
-                                        <trix-editor class="h-64" x-model.debounce.300ms="trix">
-                                            {{ $article->body }}
+                                        <trix-editor 
+                                            class="h-64"
+                                            x-ref="trix"
+                                            wire:model.debounce.500ms="article.body">
                                         </trix-editor>
                                     </div>
                                     @error('article.body') 
