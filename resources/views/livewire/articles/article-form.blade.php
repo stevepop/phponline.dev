@@ -5,7 +5,6 @@
     @endpush
     <section class="mb-12">
         <div class="sm:w-full md:w-3/4 p-6">
-             {{ $article }}
             <form action="#" wire:submit.prevent="saveArticle" class="p-6 mb-6 w-full bg-white rounded">
                 @csrf
                 <div class="mt-2">
